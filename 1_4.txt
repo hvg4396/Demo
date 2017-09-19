@@ -1,0 +1,64 @@
+/*************************************************************************************
+*File Name			:	Armstrong.txt
+*Author Name		:	Harsha Vardhan G
+*Description		:	Program to check whether the given number is Armstrong or not
+*Version			:	1.0
+*Last Modified Date	:	19-Sept-2017
+***************************************************************************************/
+
+BEGIN
+
+DECLARE number AS INTEGER
+DECLARE is_armstrong AS INTEGER
+
+PROMPT "Please enter a number" AND STORE IN number
+
+is_armstrong = checkArmstrong(number)
+
+IF (is_armstrong == 1) THEN
+	PRINT number," is an Armstrong number"
+ELSE
+	PRINT number," is not an Armstrong number"
+
+EXCEPTION
+	WHEN negativeInput THEN
+	PRINT Error Message
+
+END
+
+/*****************************************************************************************
+*File Name			:	Armstrong.txt
+*Author Name		:	Harsha Vardhan G
+*Sub-module Name	:	checkArmstrong()
+*Description		:	Sub-Module to check whether the given number is Armstrong or not
+*Version			:	1.0
+*Last Modified Date	:	19-Sept-2017
+*Input Parameters	:	number
+*Return Type		:	INTEGER
+******************************************************************************************/
+
+SUB checkArmstrong(number INTEGER)
+
+IF(number<0)
+	RAISE negativeInput("Inputted number cannot be negative")
+	EXIT
+END IF
+
+SET temp_number TO number
+SET to_check_number TO number
+SET final_number TO 0
+
+WHILE(temp_number!=0)
+DO	
+	number 			= temp_number % 10
+	final_number 	= final_number + (number*number*number)
+	temp_number 	= temp_number / 10
+END WHILE
+
+IF (to_check_number == final_number)
+RETURN 1
+ELSE
+RETURN 0
+END IF
+
+END SUB

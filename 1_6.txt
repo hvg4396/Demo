@@ -1,0 +1,77 @@
+/**********************************************************************
+*File Name			:	LoopingStatementDemo.txt
+*Author Name		:	Harsha Vardhan G
+*Description		:	Program to print the minimum value in an array
+						and printing odd and even numbers
+*Version			:	1.0
+*Last Modified Date	:	19-Sept-2017
+***********************************************************************/
+
+BEGIN
+
+SET size_of_array TO 10
+SET index TO 0
+SET e_temp_index TO 0
+SET o_temp_index TO 0
+
+DECLARE num_list[size_of_array] as INTEGER ARRAY
+DECLARE odd_num_list[size_of_array/2] as INTEGER ARRAY
+DECLARE even_num_list[size_of_array/2] as INTEGER ARRAY
+DECLARE minimum
+
+PRINT "Please enter 10 numbers"
+FOR index = 0 TO 9
+	ACCEPT num_list[index]
+END FOR
+
+minimum = checkMinimum(num_list, 9)
+
+PRINT "Minimum value in the array is " ,minimum
+
+/*Creating an Even Number List and Odd Number List*/
+FOR index = 0 to size_of_array-1
+	IF(num_list[index]%2 == 0)
+		even_num_list[e_temp_index]
+		CALCULATE e_temp_index = e_temp_index + 1;
+	ELSE
+		odd_num_list[o_temp_index]
+		CALCULATE o_temp_index = o_temp_index + 1;
+	END IF
+END FOR
+
+/*Printing Even numbers and Odd numbers*/
+PRINT "Even Numbers are"
+FOR index = 0 to e_temp_index-1
+	PRINT even_num_list[index]
+END FOR
+PRINT "Odd Numbers are"
+FOR index = 0 to o_temp_index-1
+	PRINT odd_num_list[index]
+END FOR
+
+END
+
+/**************************************************************************
+*File Name			:	LoopingStatementDemo.txt
+*Author Name		:	Harsha Vardhan G
+*Sub-module Name	:	checkMinimum()
+*Description		:	Sub-Module to check the minimum value in an array
+*Version			:	1.0
+*Last Modified Date	:	19-Sept-2017
+*Input Parameters	:	num_list, size_of_array
+*Return Type		:	INTEGER
+***************************************************************************/
+
+SUB checkMinimum(num_list INTEGER ARRAY, size_of_array)
+
+SET minimum TO 999999
+SET index TO 0
+
+FOR index = 0 to size_of_array-1
+	IF(num_list[index]<minimum)
+	minimum=num_list[index]
+END FOR
+
+RETURN minimum
+
+END SUB

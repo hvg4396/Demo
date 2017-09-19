@@ -1,0 +1,57 @@
+/***********************************************************************
+*File Name			:	EmployeeTagColor.txt
+*Author Name		:	Harsha Vardhan G
+*Description		:	Program to display tag color of the employee
+						based on years of experience
+*Version			:	1.0
+*Last Modified Date	:	19-Sept-2017
+************************************************************************/
+
+BEGIN
+
+DECLARE years_of_experience AS INTEGER
+DECALRE tag_color AS STRING
+
+PROMPT "Please enter your years of experience" AND STORE IN years_of_experience
+
+tag_color = tagColor(years_of_experience)
+
+PRINT "Your tag color is ", tag_color
+
+EXCEPTION 
+	WHEN invalidYearsOfExperience THEN
+	PRINT Error message
+
+END
+
+/*******************************************************************************
+*File Name			:	EmployeeTagColor.txt
+*Author Name		:	Harsha Vardhan G
+*Sub-module Name	:	tagColor()
+*Description		:	Sub-Module to calculate the tag color of the employee
+*Version			:	1.0
+*Last Modified Date	:	19-Sept-2017
+*Input Parameters	:	years_of_experience
+*Return Type		:	STRING
+********************************************************************************/
+
+SUB tagColor(years_of_experience INTEGER)
+
+IF(years_of_experience<0) THEN
+	RAISE invalidYearsOfExperience("Employee experience cannot be negative")
+	EXIT
+END IF
+
+IF(years_of_experience>=0 AND years_of_experience<3)
+RETURN "Blue"
+
+IF(years_of_experience>=3 AND years_of_experience<5)
+RETURN "Grey"
+
+IF(years_of_experience>=5 AND years_of_experience<10)
+RETURN "Yellow"
+
+IF(years_of_experience>=10)
+RETURN "Red"
+
+END SUB

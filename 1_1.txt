@@ -1,0 +1,55 @@
+/******************************************************************************
+*File Name			:	CalculateElectricityBill.txt
+*Author Name		:	Harsha Vardhan G
+*Description		:	Program to calculate the electricity bill of any user
+*Version			:	1.0
+*Last Modified Date	:	19-Sept-2017
+*******************************************************************************/
+
+BEGIN
+
+DECLARE user_id AS INTEGER
+DECLARE user_name AS STRING
+DECLARE last_month_reading AS INTEGER
+DECLARE current_month_reading AS INTEGER
+
+PROMPT "Please enter your User ID" AND STORE IN user_id
+PROMPT "Please enter your User Name" AND STORE IN user_name
+PROMPT "Please enter your Last Month Reading" AND STORE IN last_month_reading
+PROMPT "Please enter your Current Month Reading" AND STORE IN current_month_reading
+
+IF (user_id < 0) THEN 
+	PRINT "Invalid User ID"
+	EXIT
+END IF
+
+calculateElectricityBill(user_id, user_name, last_month_reading, current_month_reading)
+
+END
+
+/**************************************************************************************
+*File Name			:	CalculateElectricityBill.txt
+*Author Name		:	Harsha Vardhan G
+*Sub-module Name	:	calculateElectricityBill()
+*Description		:	Sub-Module to calculate the electricity bill of any user
+*Version			:	1.0
+*Last Modified Date	:	19-Sept-2017
+*Input Parameters	:	user_id, user_name, last_month_reading, current_month_reading
+*Return Type		:	VOID
+***************************************************************************************/
+
+SUB calculateElectricityBill(user_id INTEGER, user_name STRING, last_month_reading INTEGER, current_month_reading INTEGER)
+
+DECLARE unit_consumed AS INTEGER
+DECLARE net_amount AS REAL
+SET CONSTANT fixed_charge TO 100
+
+CALCULATE unit_consumed =  current_month_reading - last_month_reading
+CALCULATE net_amount = (unit_consumed * 1.15) + fixed_charge
+
+PRINT "User ID is " , user_id
+PRINT "User Name is " , user_name
+PRINT "Units Consumed are " , unit_consumed , " units"
+PRINT "Net Amount is " , net_amount
+
+END SUB

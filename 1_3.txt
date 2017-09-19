@@ -1,0 +1,34 @@
+/*************************************************************
+*File Name			:	MathematicalSeries.txt
+*Author Name		:	Harsha Vardhan G
+*Description		:	Program to print mathematical series
+*Version			:	1.0
+*Last Modified Date	:	19-Sept-2017
+**************************************************************/
+
+BEGIN
+
+DECLARE limit AS INTEGER
+DECLARE index AS INTEGER
+SET num1 to 0
+SET num2 to 1
+SET sum to 0
+
+PROMPT "Enter limit" AND STORE IN limit
+
+IF(limit<0) THEN
+	PRINT "Invalid Limit"
+	EXIT
+END IF
+
+PRINT num1
+PRINT num2
+
+FOR index = 0 TO limit - 2
+sum 	= num1 + num2
+num1 	= num2
+num2 	= sum
+PRINT sum
+END FOR
+
+END

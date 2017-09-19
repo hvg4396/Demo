@@ -1,0 +1,62 @@
+/************************************************************
+*File Name			:	BinaryToDecimal.txt
+*Author Name		:	Harsha Vardhan G
+*Description		:	Program to convert Binary to Decimal
+*Version			:	1.0
+*Last Modified Date	:	19-Sept-2017
+*************************************************************/
+
+BEGIN
+
+DECLARE decimal_number AS INTEGER
+DECLARE binary_number AS INTEGER
+
+PROMPT "Please enter a number" AND STORE IN binary_number
+
+IF (binary_number == 0) THEN
+	PRINT "0"
+END IF
+
+decimal_number = convertToDecimal(binary_number)
+
+PRINT "Decimal number for ", binary_number, " is ", decimal_number
+
+EXCEPTION
+	WHEN invalidBinaryNumber THEN
+	PRINT Error message
+
+END
+
+/***************************************************************
+*File Name			:	BinaryToDecimal.txt
+*Author Name		:	Harsha Vardhan G
+*Sub-module Name	:	convertToDecimal()
+*Description		:	Sub-Module to convert Binary to Decimal
+*Version			:	1.0
+*Last Modified Date	:	19-Sept-2017
+*Input Parameters	:	binary_number
+*Return Type		:	INTEGER
+****************************************************************/
+
+SUB convertToDecimal(binary_number INTEGER)
+
+IF (binary_number < 0) THEN
+RAISE invalidBinaryNumber("Input can't be negative")
+EXIT
+END IF
+
+SET temp_number TO number
+SET index TO 0
+SET final_number TO 0
+
+WHILE(temp_number!=0)
+DO	
+	number 			= temp_number % 10
+	final_number 	= final_number + (number*power(2, index))
+	temp_number 	= temp_number / 10
+	CALCULATE index = index + 1
+END WHILE
+
+RETURN final_number
+
+END SUB

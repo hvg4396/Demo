@@ -1,0 +1,31 @@
+/****************************************************************************************
+*File Name			:	GoodProgrammingPractices.txt
+*Author Name		:	Harsha Vardhan G
+*Description		:	Pseudocode to calculate total price of a product including tax
+*Version			:	1.0
+*Last Modified Date	:	19-Sept-2017
+*****************************************************************************************/
+
+
+BAD PRACTICE
+BEGIN
+Print "Enter price of your product" 
+Accept p
+tc=p*.56
+Print "Total price of product is":  tc
+END  
+
+GOOD PRACTICE
+BEGIN
+
+DECLARE price AS INTEGER
+DECLARE total_cost AS REAL
+SET CONSTANT tax_rate TO 0.56
+
+PROMPT "Please enter price of the product" AND STORE IN price
+
+CALCULATE total_cost = price * tax_rate
+
+PRINT "Total price of the product is ", total_cost
+
+END
