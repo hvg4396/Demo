@@ -1,0 +1,58 @@
+/*******************************************************************************
+*File Name			:	UniqueValueCount.txt
+*Author Name		:	Harsha Vardhan G
+*Description		:	Program to find the number of unique values in an array
+*Version			:	1.0
+*Last Modified Date	:	19-Sept-2017
+*******************************************************************************/
+
+BEGIN
+
+SET size_of_array TO 10
+SET index TO 0
+DECLARE num_list[size_of_array] as INTEGER ARRAY
+DECLARE count AND STORE 0
+
+PRINT "Please enter 10 numbers"
+FOR index = 0 TO size_of_array-1
+	ACCEPT num_list[index]
+END FOR
+
+count = countUnique(num_list, size_of_array)
+
+PRINT "Number of unique elements in the array is ", count
+
+END
+
+/*******************************************************************************
+*File Name			:	UniqueValueCount.txt
+*Author Name		:	Harsha Vardhan G
+*Sub-module Name	:	countUnique()
+*Description		:	Sub-Module to find the number of unique values in an array
+*Version			:	1.0
+*Last Modified Date	:	19-Sept-2017
+*Input Parameters	:	num_list, size_of_array
+*Return Type		:	INTEGER
+*******************************************************************************/
+
+SUB countUnique(num_list[] INTEGER ARRAY, size_of_array INTEGER)
+
+INITIALIZE count TO 0	//or SET count TO 0		//or DECLARE count AND STORE 0
+DECLARE index_i AND STORE 0
+DECLARE index_j AND STORE 0
+SET count TO 0
+SET unique TO 0
+
+FOR index_i = 0 TO size_of_array-1
+	SET count TO 0
+	FOR index_j = 0 TO size_of_array-1
+		IF(num_list[index_i] != num_list[index_j])
+			SET unique = unique + 1
+	END FOR index_j
+		IF (unique == size_of_array-1)
+			SET count = count + 1
+END index_i
+
+RETURN count
+
+END SUB

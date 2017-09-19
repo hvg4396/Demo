@@ -1,0 +1,55 @@
+/*******************************************************************************
+*File Name			:	SumOfDigits.txt
+*Author Name		:	Harsha Vardhan G
+*Description		:	Program to find the sum of the digits of a given number
+*Version			:	1.0
+*Last Modified Date	:	19-Sept-2017
+*******************************************************************************/
+
+BEGIN
+
+DECALRE number AS INTEGER
+SET sum TO 0
+
+PROMPT "Please enter a number" AND STORE IN number
+
+sum = sumOfNumbers(number)
+
+PRINT "Sum of digits in ", number, " is ", sum
+
+EXCEPTION
+	WHEN invalidNumber THEN
+	PRINT Error Message
+	
+END
+
+/********************************************************************************
+*File Name			:	SumOfDigits.txt
+*Author Name		:	Harsha Vardhan G
+*Sub-module Name	:	sumOfNumbers()
+*Description		:	Program to find the sum of the digits of a given number
+*Version			:	1.0
+*Last Modified Date	:	19-Sept-2017
+*Input Parameters	:	number
+*Return Type		:	INTEGER
+********************************************************************************/
+
+SUB sumOfNumbers(number INTEGER)
+
+IF(number < 0) THEN
+RAISE invalidNumber("Input can't be negative");
+END IF
+
+SET temp_number TO number
+SET sum TO 0
+
+WHILE(temp_number!=0)
+DO
+	number 		= temp_number % 10
+	sum 		= sum + number
+	temp_number = temp_number / 10
+END WHILE
+
+RETURN sum
+
+END SUB
