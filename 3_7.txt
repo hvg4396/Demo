@@ -1,0 +1,58 @@
+/*************************************************************************************
+*File Name			:	AlgorithmAnalysisAndDesign_6.txt
+*Author Name		:	Harsha Vardhan G
+*Description		:	Pseudocode to check whether a sub-string appears in a string
+*Version			:	1.0
+*Last Modified Date	:	20-Sept-2017
+*************************************************************************************/
+
+BEGIN
+
+DECLARE str, sub_str AS STRING
+DECLARE result AS INTEGER
+
+PROMPT "Please enter string" AND STORE IN str
+PROMPT "Please enter sub string" AND STORE IN substr
+
+result = subStrCheck(str, sub_str)
+
+IF(result != -1)
+	PRINT "Substring found in source string"
+ELSE
+	PRINT "Substring not found in source string"
+END IF
+
+END
+
+/************************************************************************************
+*File Name			:	AlgorithmAnalysisAndDesign_6.txt
+*Author Name		:	Harsha Vardhan G
+*Sub-module Name	:	subStrCheck()
+*Description		:	Sub-Module to check whether a sub-string appears in a string
+*Version			:	1.0
+*Last Modified Date	:	20-Sept-2017
+*Input Parameters	:	str, sub_str
+*Return Type		:	INTEGER
+************************************************************************************/
+
+SUB subStrCheck(str STRING, sub_str STRING)
+
+DECLARE index_i, index_j AS INTEGER AND STORE 0
+
+WHILE str[index_i] != '\0'		//iterate until the end of the main string
+DO
+	IF(sub_str[index_j] != '\0' && str[index_i] == sub_str[index_j])
+		count 	= count + 1
+		index_j = index_j + 1
+	END IF
+	index_i = index_i + 1
+	IF(count == length of sub_str)
+		RETURN 1
+	ELSE
+		count=0
+	END IF
+END WHILE
+
+RETURN -1
+
+END SUB

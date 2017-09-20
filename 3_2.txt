@@ -1,0 +1,26 @@
+/*********************************************************************
+*File Name			:	AlgorithmAnalysisAndDesign_2.txt
+*Author Name		:	Harsha Vardhan G
+*Description		:	To find the output of the given algorithm
+*Version			:	1.0
+*Last Modified Date	:	20-Sept-2017
+*********************************************************************/
+
+/*****QUESTION*****/
+3.2 Determine the output of below given algorithm by tracing it for the taking any sample
+input.
+ALGORITHM surprise(A[0..n-1])
+
+//Input: An array A[0..n-1] of real numbers
+If n=1
+	return A[0]
+else
+	t=surprise(A[0..n-2])
+	if t<=A[n-1]
+		return t
+	else
+		return A[n-1]
+		
+/*****OUTPUT*****/
+---->	First element of the array
+

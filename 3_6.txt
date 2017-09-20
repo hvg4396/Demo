@@ -1,0 +1,95 @@
+/**********************************************************************************************
+*File Name			:	AlgorithmAnalysisAndDesign_6.txt
+*Author Name		:	Harsha Vardhan G
+*Description		:	Pseudocode to sort the elements and search for an element in an array
+*Version			:	1.0
+*Last Modified Date	:	20-Sept-2017
+**********************************************************************************************/
+
+BEGIN
+
+DECLARE num_list[5] AS INTEGER ARRAY
+DECLARE index AS INTEGER
+DECLARE key AS INTEGER
+DECLARE result AS INTEGER
+
+PRINT "Please enter 5 elements"
+FOR index = 1 TO 5
+	READ num_list[index]
+
+num_list = sortArray(num_list, 5)
+	
+PROMPT "Enter the element to be found" AND STORE IN key
+
+result = searchElement(num_list, 0, 5, key)
+
+PRINT "Elements in sorted order"
+FOR index = 1 TO 5
+	PRINT num_list[index]
+IF(result != -1)
+	PRINT key, " is found at location number ", result
+ELSE
+	PRINT key, " not present in the array"
+END IF
+
+END
+
+/********************************************************************
+*File Name			:	AlgorithmAnalysisAndDesign_5.txt
+*Author Name		:	Harsha Vardhan G
+*Sub-module Name	:	sortArray()
+*Description		:	Sub-Module to sort the elements in an array
+*Version			:	1.0
+*Last Modified Date	:	20-Sept-2017
+*Input Parameters	:	num_list, size_of_array
+*Return Type		:	INTEGER
+********************************************************************/
+
+SUB sortArray(num_list[] INTEGER ARRAY, size_of_array INTEGER)
+
+DECLARE index_i, index_j AS INTEGER
+DECLARE temp_holder AS INTEGER
+
+FOR index_i = 1 TO size_of_array
+	FOR index_j = 0 TO size_of_array - index_i
+		IF(num_list[index_j] >= num_list[index_j + 1])
+			SET temp_holder 			= num_list[index_j]
+			SET num_list[index_j] 		= num_list[index_j + 1]
+			SET num_list[index_j + 1] 	= temp_holder
+		END IF
+	END FOR		//index_j loop
+END FOR 		//index_i loop
+
+RETURN num_list	//returning base address of the array num_list
+
+END SUB
+
+/************************************************************************
+*File Name			:	AlgorithmAnalysisAndDesign_5.txt
+*Author Name		:	Harsha Vardhan G
+*Sub-module Name	:	searchElement()
+*Description		:	Sub-Module to search for an element in the array
+*Version			:	1.0
+*Last Modified Date	:	20-Sept-2017
+*Input Parameters	:	num_list, first_element, size_of_array, key
+*Return Type		:	INTEGER
+************************************************************************/
+
+SUB searchElement(num_list[] INTEGER ARRAY, first_element, size_of_array INTEGER, key INTEGER)
+
+SET last_element TO size_of_array-1
+DECLARE middle AS INTEGER
+
+middle = (num_list[first_element] + num_list[last_element]) / 2
+
+IF(key == num_list[middle])
+	RETURN middle
+ELSE IF(key > num_list[middle])
+	searchElement(num_list, middle+1, last_element, key)
+ELSE IF(key < num_list[middle])
+	searchElement(num_list, first_element, middle, key)
+ELSE
+	RETURN -1
+END IF
+
+END SUB

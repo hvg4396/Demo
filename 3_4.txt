@@ -1,0 +1,22 @@
+/*****************************************************************************
+*File Name			:	AlgorithmAnalysisAndDesign_4.txt
+*Author Name		:	Harsha Vardhan G
+*Description		:	To find the sum of 'n' numbers where 'n' is the input
+*Version			:	1.0
+*Last Modified Date	:	20-Sept-2017
+*****************************************************************************/
+
+3.4 Consider the following Algorithm,
+
+ALGORITHM Sum(n)
+//Input: A nonnegative integer n
+sum = 0
+for index = 1 to n do
+	sum = sum+i
+return sum
+
+***1 	What does the above algorithm compute?
+Ans: 	The above algorithm computes the sum of the first n integers where n is inputted by the user
+
+***2 	What is the efficiency class of the given algorithm?
+Ans:	O(n)

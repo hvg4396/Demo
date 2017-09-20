@@ -1,0 +1,56 @@
+/************************************************************************************************
+*File Name			:	AlgorithmAnalysisAndDesign_5.txt
+*Author Name		:	Harsha Vardhan G
+*Description		:	Pseudocode to find the number of times a character is repeated in a word
+*Version			:	1.0
+*Last Modified Date	:	20-Sept-2017
+************************************************************************************************/
+
+BEGIN
+
+DECLARE word AS STRING
+DECLARE character AS CHAR
+DECLARE result AS INTEGER
+
+PROMPT "Please enter word" AND STORE IN word
+PROMPT "Please enter character" AND STORE IN character
+
+result = countCharOccurance(word, character)
+
+IF(RESULT != -1)
+PRINT character, " occured ", result, " times in ", word
+ELSE
+PRINT character, " not present in ", word
+
+END
+
+/************************************************************************************************
+*File Name			:	AlgorithmAnalysisAndDesign_5.txt
+*Author Name		:	Harsha Vardhan G
+*Sub-module Name	:	countCharOccurance()
+*Description		:	Sub-Module to find the number of times a character is repeated in a word
+*Version			:	1.0
+*Last Modified Date	:	20-Sept-2017
+*Input Parameters	:	word, character
+*Return Type		:	INTEGER
+************************************************************************************************/
+
+SUB countCharOccurance(word STRING, character CHAR)
+
+DECLARE index AND STORE 0
+DECLARE count AND STORE 0
+
+WHILE word[index] != '\0'		//iterate until the end of the word
+DO
+	IF(character == word[index])
+		count = count + 1
+	END IF
+END WHILE
+
+IF(count==0)
+	RETURN -1
+ELSE
+	RETURN count
+END IF
+
+END SUB

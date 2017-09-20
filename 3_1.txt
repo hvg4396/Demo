@@ -1,0 +1,52 @@
+/*********************************************************************
+*File Name			:	AlgorithmAnalysisAndDesign_1.txt
+*Author Name		:	Harsha Vardhan G
+*Description		:	Algorithm to compute the difference between 
+						the max and the min value in an array
+*Version			:	1.0
+*Last Modified Date	:	20-Sept-2017
+*********************************************************************/
+
+/*****QUESTION*****/
+ALGORITHM Check(A[0..n-1])
+
+//Input: An array A[0..n-1] of n real numbers
+x = A[0]; y = A[0]
+for i=1 to n-1 do
+	if A[i] < x
+		x = A[i]
+	if A[i] > y
+		y = A[i]
+return y - x
+
+For the algorithm given above,
+* What does this algorithm computes?
+Answer: This algorithm assigns the maximum value to y and minimum value to x and produces the difference between y and x
+
+* What is its basic operation?
+Answer: This algorithm's basic operation involves iteration to assign the min value to x and max value to y
+
+* Check the no of times the basic operation is executed depends only on the size
+of an input or on any other parameter.
+Answer: It depends upon the size of the array
+
+* Set up a sum/recurrence, expressing the number of times the basic operation is
+executed.
+Answer:
+ALGORITHM Check(A[0..n-1])
+
+//Input: An array A[0..n-1] of n real numbers
+x = A[0]; y = A[0]; count = 0;
+for i=1 to n-1 do
+	if A[i] < x
+		x = A[i]
+	if A[i] > y
+		y = A[i]
+count++		//use count variable to store the number of times the loop is repeating
+
+print count
+
+return y - x
+
+* What is the efficiency class of the given algorithm?
+Answer: O(n)
