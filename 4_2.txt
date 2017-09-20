@@ -1,0 +1,92 @@
+/*************************************************************************
+*File Name			:	RefactoringDemo.txt
+*Author Name		:	Harsha Vardhan G
+*Description		:	Pseudocode explaining the concept of Refactoring
+*Version			:	1.0
+*Last Modified Date	:	20-Sept-2017
+*************************************************************************/
+
+RECORD Employee
+DECLARE EmpId as INTEGER
+DECLARE employmentType AS STRING
+END RECORD
+
+BEGIN
+
+DECLARE emp AS Employee						//RECORD Variable
+
+DECLARE leaves, TotalLeaves AS INTEGER		//leaves variable is used to store number of leaves per month
+
+FOR index = 1 to 5
+	PROMPT "Enter the EmployeeId" AND STORE IN
+	emp.EmpId
+
+	IF(!isEmpIDValid(emp.EmpId))
+		PRINT "Employee ID is invalid"
+		EXIT
+	END IF
+
+	PROMPT "Enter the employmentType" AND STORE IN
+	emp.employmentType
+
+	IF(!isEmpTypeValid(emp.employmentType))
+		PRINT "Employee Type is invalid"
+		EXIT
+	END IF
+
+END FOR
+
+FOR index = 1 to 5
+	IF(employmentType=='PERMANENT') THEN
+		leaves=2;
+	ELSE IF(employmentType=='CONTRACT') THEN
+		leaves=1;
+	END IF
+	CALCULATE TotalLeaves = leaves * 12;
+	PRINT "Employee Id : ", emp.EmpId
+	PRINT "Total Available Leaves are : ", TotalLeaves
+	END FOR
+
+END
+
+/**********************************************************************************
+*File Name			:	RefactoringDemo.txt
+*Author Name		:	Harsha Vardhan G
+*Sub-module Name	:	isEmpIDValid()
+*Description		:	Sub-Module to check whether the Employee ID is valid or not
+*Version			:	1.0
+*Last Modified Date	:	20-Sept-2017
+*Input Parameters	:	EmpId
+*Return Type		:	INTEGER
+**********************************************************************************/
+
+SUB isEmpIDValid(EmpId INTEGER)
+
+IF(isDigits(EmpId)) THEN
+	RETURN 1
+ELSE
+	RETURN 0
+END IF
+
+END SUB
+
+/*************************************************************************************
+*File Name			:	RefactoringDemo.txt
+*Author Name		:	Harsha Vardhan G
+*Sub-module Name	:	isEmpTypeValid()
+*Description		:	Sub-Module to check whether the Employee Type is valid or not
+*Version			:	1.0
+*Last Modified Date	:	20-Sept-2017
+*Input Parameters	:	employmentType
+*Return Type		:	INTEGER
+*************************************************************************************/
+
+SUB isEmpTypeValid(employmentType STRING)
+
+IF(employmentType=='PERMANENT' || employmentType=='CONTRACT') THEN
+	RETURN 1
+ELSE
+	RETURN 0
+END IF
+
+END SUB
